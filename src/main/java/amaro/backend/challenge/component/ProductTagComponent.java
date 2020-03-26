@@ -3,6 +3,7 @@ package amaro.backend.challenge.component;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,19 +20,21 @@ public class ProductTagComponent {
 	private static final String TAGS_TOKEN_SEPARATOR = ",";
 	
 	private Map<Integer, String> tags = new HashMap<>();
-	
+		
 	public Map<Integer, String> getTags() {
 		if (this.tags.isEmpty()) {
 			this.fillTagMap();
 		}
-		return this.tags;
+		return new TreeMap<>(this.tags);
 	}
 	
 	public boolean containsTag(final String tag) {
+		this.getTags();
 		return this.tags.containsValue(tag);
 	}
 	
 	public Optional<String> getByIndex(final int index) {
+		this.getTags();
 		return Optional.ofNullable(this.tags.get(index));
 	}
 

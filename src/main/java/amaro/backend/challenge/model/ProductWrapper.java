@@ -2,6 +2,7 @@ package amaro.backend.challenge.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductWrapper<T, R> {
 
@@ -23,8 +24,8 @@ public class ProductWrapper<T, R> {
 		return !this.listObject.isEmpty();
 	}
 	
-	public T getInput() {
-		return this.singleObject;
+	public Optional<T> getInput() {
+		return Optional.ofNullable(this.singleObject);
 	}
 	
 	public List<T> getListInput() {

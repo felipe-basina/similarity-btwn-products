@@ -32,8 +32,9 @@ public class ProductWrapper<T, R> {
 		return this.listObject;
 	}
 	
-	public void addResponse(List<R> response) {
+	public ProductWrapper<T, R> addResponse(List<R> response) {
 		this.response.addAll(response);
+		return this;
 	}
 	
 	public List<R> getResponse() {

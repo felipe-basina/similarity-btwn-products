@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import amaro.backend.challenge.component.ProductTagComponent;
 import amaro.backend.challenge.model.Product;
 import amaro.backend.challenge.model.ProductResponse;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class ProductTagService {
 
@@ -25,6 +27,7 @@ public class ProductTagService {
 	}
 	
 	public ProductResponse addTagsVectorTokens(Product product) {
+		log.info("Processing product {} | {}", product.getId(), product.getName());
 		return new ProductResponse()
 				.id(product.getId())
 				.name(product.getName())

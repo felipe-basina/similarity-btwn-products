@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import amaro.backend.challenge.model.ApiErrorResponse;
-import amaro.backend.challenge.model.Product;
+import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.ProductResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiResponses;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T01:08:13.280Z")
 
 @Api(value = "tagsVector", description = "the tagsVector API", tags = {"TagsVector"})
-@RequestMapping(value = "/similarity")
+@RequestMapping
 public interface TagsVectorApi {
 
     @ApiOperation(value = "Creates characteristics tags for each one of the available products in the input payload", nickname = "createCharacteristicsTags", notes = "", response = ProductResponse.class, responseContainer = "List", tags={ "TagsVector", })
@@ -36,6 +36,6 @@ public interface TagsVectorApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<List<ProductResponse>> createCharacteristicsTags(@ApiParam(value = "An array of available products" ,required=true )  @Valid @RequestBody List<Product> body);
+    ResponseEntity<List<ProductResponse>> createCharacteristicsTags(@ApiParam(value = "An array of available products" ,required=true )  @Valid @RequestBody ProductRequest products);
 
 }

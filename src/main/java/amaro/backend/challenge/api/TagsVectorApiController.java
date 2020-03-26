@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import amaro.backend.challenge.model.Product;
+import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.ProductResponse;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class TagsVectorApiController implements TagsVectorApi {
 
 	public ResponseEntity<List<ProductResponse>> createCharacteristicsTags(
-			@ApiParam(value = "An array of available products", required = true) @Valid @RequestBody List<Product> body) {
+			@ApiParam(value = "An array of available products", required = true) @Valid @RequestBody ProductRequest products) {
 		return new ResponseEntity<List<ProductResponse>>(HttpStatus.NOT_IMPLEMENTED);
 	}
 

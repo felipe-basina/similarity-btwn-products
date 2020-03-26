@@ -24,9 +24,9 @@ public class ProductFactoryComponentTest {
 	}
 
 	@Test
-	public void testGetImpementationFromTagServiceQualifier() {
+	public void testGetImplementationFromTagServiceQualifier() {
 		IProductService productService = this.productFactoryComponent
-				.getImpementationFrom(TagService.TAG_SERVICE_QUALIFIER);
+				.getImplementationFrom(TagService.TAG_SERVICE_QUALIFIER);
 		Assert.assertTrue(productService instanceof TagService);
 	}
 

@@ -29,7 +29,7 @@ public class ProductFactoryComponent {
 		return this.implementations.get(qualifier);
 	}
 	
-	public IProductService getImpementationFrom(final String qualifier) {
+	public IProductService getImplementationFrom(final String qualifier) {
 		return this.getImpl(qualifier);
 	}
 	

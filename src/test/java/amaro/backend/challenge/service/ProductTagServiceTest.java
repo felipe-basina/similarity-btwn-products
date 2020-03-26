@@ -26,65 +26,63 @@ public class ProductTagServiceTest extends CommonsBase {
 	private static final int DELICADO_INDEX = 17;
 	private static final int DESCOLADO_INDEX = 18;
 	private static final int TOTAL_TAGS = 20;
-	private static final int FOUND_TAG_TOKEN = 1;
-	private static final int NOT_FOUND_TAG_TOKEN = 0;
 	
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void testAddTagsVectorIndexes() {
+	public void testAddTagsVectorTokens() {
 		Product product = this.createProduct();
 		
-		ProductResponse productResponse = this.productTagService.addTagsVectorIndexes(product);
+		ProductResponse productResponse = this.productTagService.addTagsVectorTokens(product);
 		
 		Assert.assertNotNull(productResponse);
 		Assert.assertNotNull(productResponse.getTagsVector());
 		Assert.assertFalse(productResponse.getTagsVector().isEmpty());
 		Assert.assertTrue(TOTAL_TAGS == productResponse.getTagsVector().size());
-		Assert.assertTrue(FOUND_TAG_TOKEN == productResponse.getTagsVector().get(BALADA_INDEX));
-		Assert.assertTrue(FOUND_TAG_TOKEN == productResponse.getTagsVector().get(METAL_INDEX));
-		Assert.assertTrue(FOUND_TAG_TOKEN == productResponse.getTagsVector().get(DELICADO_INDEX));
-		Assert.assertTrue(FOUND_TAG_TOKEN == productResponse.getTagsVector().get(DESCOLADO_INDEX));
+		Assert.assertTrue(ProductTagService.FOUND_TAG_TOKEN == productResponse.getTagsVector().get(BALADA_INDEX));
+		Assert.assertTrue(ProductTagService.FOUND_TAG_TOKEN == productResponse.getTagsVector().get(METAL_INDEX));
+		Assert.assertTrue(ProductTagService.FOUND_TAG_TOKEN == productResponse.getTagsVector().get(DELICADO_INDEX));
+		Assert.assertTrue(ProductTagService.FOUND_TAG_TOKEN == productResponse.getTagsVector().get(DESCOLADO_INDEX));
 		Assert.assertEquals(4l,
-				productResponse.getTagsVector().stream().filter(index -> index == FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.FOUND_TAG_TOKEN).count());
 		Assert.assertEquals(16l,
-				productResponse.getTagsVector().stream().filter(index -> index == NOT_FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.NOT_FOUND_TAG_TOKEN).count());
 	}
 
 	@Test
-	public void testAddTagsVectorIndexesWithNoneTag() {
+	public void testAddTagsVectorTokensWithNoTags() {
 		Product product = this.createProduct();
 		product.tags(Collections.emptyList());
 		
-		ProductResponse productResponse = this.productTagService.addTagsVectorIndexes(product);
+		ProductResponse productResponse = this.productTagService.addTagsVectorTokens(product);
 		
 		Assert.assertNotNull(productResponse);
 		Assert.assertNotNull(productResponse.getTagsVector());
 		Assert.assertFalse(productResponse.getTagsVector().isEmpty());
 		Assert.assertTrue(TOTAL_TAGS == productResponse.getTagsVector().size());
 		Assert.assertEquals(0l,
-				productResponse.getTagsVector().stream().filter(index -> index == FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.FOUND_TAG_TOKEN).count());
 		Assert.assertEquals(TOTAL_TAGS,
-				productResponse.getTagsVector().stream().filter(index -> index == NOT_FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.NOT_FOUND_TAG_TOKEN).count());
 	}
 
 	@Test
-	public void testAddTagsVectorIndexesWithAllTags() {
+	public void testAddTagsVectorTokensWithAllTags() {
 		Product product = this.createProduct();
 		product.tags(this.allTags);
 		
-		ProductResponse productResponse = this.productTagService.addTagsVectorIndexes(product);
+		ProductResponse productResponse = this.productTagService.addTagsVectorTokens(product);
 		
 		Assert.assertNotNull(productResponse);
 		Assert.assertNotNull(productResponse.getTagsVector());
 		Assert.assertFalse(productResponse.getTagsVector().isEmpty());
 		Assert.assertTrue(TOTAL_TAGS == productResponse.getTagsVector().size());
 		Assert.assertEquals(TOTAL_TAGS,
-				productResponse.getTagsVector().stream().filter(index -> index == FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.FOUND_TAG_TOKEN).count());
 		Assert.assertEquals(0l,
-				productResponse.getTagsVector().stream().filter(index -> index == NOT_FOUND_TAG_TOKEN).count());
+				productResponse.getTagsVector().stream().filter(index -> index == ProductTagService.NOT_FOUND_TAG_TOKEN).count());
 	}
 
 }

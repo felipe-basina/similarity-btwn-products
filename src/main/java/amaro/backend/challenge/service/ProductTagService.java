@@ -16,23 +16,26 @@ public class ProductTagService {
 
 	private ProductTagComponent productTagComponent;
 	
+	public static final int FOUND_TAG_TOKEN = 1;
+	public static final int NOT_FOUND_TAG_TOKEN = 0;
+	
 	@Autowired
 	public ProductTagService(ProductTagComponent productTagComponent) {
 		this.productTagComponent = productTagComponent;
 	}
 	
-	public ProductResponse addTagsVectorIndexes(Product product) {
+	public ProductResponse addTagsVectorTokens(Product product) {
 		return new ProductResponse()
 				.id(product.getId())
 				.name(product.getName())
 				.tags(product.getTags())
-				.tagsVector(this.getTagIndexes(product.getTags()));
+				.tagsVector(this.getTagToken(product.getTags()));
 	}
 	
-	private List<Integer> getTagIndexes(List<String> tags) {
+	private List<Integer> getTagToken(List<String> tags) {
 		Map<Integer, String> tagsMap = this.productTagComponent.getTags();
 		return tagsMap.entrySet().stream()
-				.map(tag -> tags.contains(tag.getValue()) ? 1 : 0)
+				.map(tag -> tags.contains(tag.getValue()) ? FOUND_TAG_TOKEN : NOT_FOUND_TAG_TOKEN)
 			.collect(Collectors.toList());
 	}
 	

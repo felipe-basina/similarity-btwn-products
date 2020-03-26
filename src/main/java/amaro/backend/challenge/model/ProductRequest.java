@@ -1,0 +1,94 @@
+package amaro.backend.challenge.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import javax.validation.Valid;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * ProductRequest
+ */
+@Validated
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T11:57:51.549Z")
+
+public class ProductRequest   {
+  @JsonProperty("products")
+  @Valid
+  private List<Product> products = null;
+
+  public ProductRequest products(List<Product> products) {
+    this.products = products;
+    return this;
+  }
+
+  public ProductRequest addProductsItem(Product productsItem) {
+    if (this.products == null) {
+      this.products = new ArrayList<Product>();
+    }
+    this.products.add(productsItem);
+    return this;
+  }
+
+  /**
+   * Get products
+   * @return products
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Product> getProducts() {
+    return products;
+  }
+
+  public void setProducts(List<Product> products) {
+    this.products = products;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ProductRequest productRequest = (ProductRequest) o;
+    return Objects.equals(this.products, productRequest.products);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(products);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ProductRequest {\n");
+    
+    sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

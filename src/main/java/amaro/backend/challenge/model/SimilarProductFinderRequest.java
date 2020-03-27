@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -19,16 +20,21 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T11:57:51.549Z")
 
 public class SimilarProductFinderRequest {
+
+	@NotNull
 	@JsonProperty("id")
 	private Long id = null;
 
+	@NotNull
 	@JsonProperty("name")
 	private String name = null;
 
+	@NotNull
 	@JsonProperty("tags")
 	@Valid
 	private List<String> tags = null;
 
+	@NotNull
 	@JsonProperty("tagsVector")
 	@Valid
 	private List<Integer> tagsVector = null;

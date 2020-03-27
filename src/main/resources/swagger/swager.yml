@@ -81,6 +81,10 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/SimilarProductFinderResponse"
+        404:
+          description: "product not found"
+          schema:
+              $ref: "#/definitions/ApiErrorResponse"
         500:
           description: "Internal server error"
           schema:

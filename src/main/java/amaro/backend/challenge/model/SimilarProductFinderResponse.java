@@ -1,6 +1,7 @@
 package amaro.backend.challenge.model;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Objects;
 
 import javax.validation.Valid;
@@ -134,7 +135,9 @@ public class SimilarProductFinderResponse implements Comparable<SimilarProductFi
 	
 	@Override
 	public int compareTo(SimilarProductFinderResponse o) {
-		return o.getSimilarity().compareTo(this.getSimilarity());
+		return Comparator.comparing(SimilarProductFinderResponse::getSimilarity)
+				.thenComparing(SimilarProductFinderResponse::getId)
+			.compare(o, this);
 	}
 	
 }

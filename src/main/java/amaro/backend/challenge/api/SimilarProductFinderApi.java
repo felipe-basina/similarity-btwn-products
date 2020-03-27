@@ -32,6 +32,7 @@ public interface SimilarProductFinderApi {
     @ApiOperation(value = "Returns a list with the three most similar products according to the product specified by its id as parameter", nickname = "getSimilarProducts", notes = "", response = SimilarProductFinderResponse.class, responseContainer = "List", tags={ "SimilarProductFinder", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SimilarProductFinderResponse.class, responseContainer = "List"),
+        @ApiResponse(code = 404, message = "product not found", response = ApiErrorResponse.class),
         @ApiResponse(code = 500, message = "Internal server error", response = ApiErrorResponse.class) })
     @RequestMapping(value = "/similarProductFinder/{productId}",
         produces = { "application/json" }, 

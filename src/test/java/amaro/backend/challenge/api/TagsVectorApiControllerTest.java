@@ -90,7 +90,7 @@ public class TagsVectorApiControllerTest extends CommonsBase {
 				.andExpect(status().isBadRequest())
 				.andExpect(jsonPath("$.timestamp").exists())
 				.andExpect(jsonPath("$.status", is(HttpStatus.BAD_REQUEST.value())))
-				.andExpect(jsonPath("$.message", containsString(BaseAdvice.BAD_REQUEST_PREFIX_ERROR)))
+				.andExpect(jsonPath("$.message", containsString(BaseAdvice.BAD_REQUEST_PREFIXS_ERROR.get(0))))
 			.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -105,21 +105,21 @@ public class TagsVectorApiControllerTest extends CommonsBase {
 				.andExpect(status().isBadRequest())
 				.andExpect(jsonPath("$.timestamp").exists())
 				.andExpect(jsonPath("$.status", is(HttpStatus.BAD_REQUEST.value())))
-				.andExpect(jsonPath("$.message", containsString(BaseAdvice.BAD_REQUEST_PREFIX_ERROR)))
+				.andExpect(jsonPath("$.message", containsString(BaseAdvice.BAD_REQUEST_PREFIXS_ERROR.get(0))))
 			.andDo(MockMvcResultHandlers.print());
 	}
 
 	@Test
-	public void testCreateCharacteristicsTagsWithInternalServerError() throws Exception {
+	public void testCreateCharacteristicsTagsWithBadRequestNullBody() throws Exception {
 		ProductRequest productRequest = null;
 		
 		this.mockMvc.perform(post(this.endpoint)
 				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
 				.content(this.convertToJson(productRequest)))
-				.andExpect(status().isInternalServerError())
+				.andExpect(status().isBadRequest())
 				.andExpect(jsonPath("$.timestamp").exists())
-				.andExpect(jsonPath("$.status", is(HttpStatus.INTERNAL_SERVER_ERROR.value())))
-				.andExpect(jsonPath("$.message").isNotEmpty())
+				.andExpect(jsonPath("$.status", is(HttpStatus.BAD_REQUEST.value())))
+				.andExpect(jsonPath("$.message", containsString(BaseAdvice.BAD_REQUEST_PREFIXS_ERROR.get(1))))
 			.andDo(MockMvcResultHandlers.print());
 	}
 

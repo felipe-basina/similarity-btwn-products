@@ -11,6 +11,6 @@ public class SimilarProductFinderWrapper {
 
 	private Long productId;
 
-	private List<SimilarProductFinderRequest> similars;
+	private List<SimilarProductFinderRequest> products;
 
 }

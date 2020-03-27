@@ -20,8 +20,10 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class SimilarProductFinderApiController implements SimilarProductFinderApi {
 
-    public ResponseEntity<List<SimilarProductFinderResponse>> getSimilarProducts(@ApiParam(value = "The product ID to fetch similar products",required=true) @PathVariable("productId") Integer productId,@ApiParam(value = "An array of available products with its charcateristics" ,required=true )  @Valid @RequestBody List<SimilarProductFinderRequest> body) {
-        return new ResponseEntity<List<SimilarProductFinderResponse>>(HttpStatus.NOT_IMPLEMENTED);
-    }
+	public ResponseEntity<List<SimilarProductFinderResponse>> getSimilarProducts(
+			@ApiParam(value = "The product ID to fetch similar products", required = true) @PathVariable("productId") Integer productId,
+			@ApiParam(value = "An array of available products with its charcateristics", required = true) @Valid @RequestBody List<SimilarProductFinderRequest> body) {
+		return new ResponseEntity<List<SimilarProductFinderResponse>>(HttpStatus.NOT_IMPLEMENTED);
+	}
 
 }

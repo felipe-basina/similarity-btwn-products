@@ -42,7 +42,7 @@ public class ProductWrapperTest {
 		SimilarProductFinderWrapper input = similarWrapper.getInput().get();
 		
 		Assert.assertEquals(inputWrapper.getProductId(), input.getProductId());
-		Assert.assertTrue(input.getSimilars().isEmpty());
+		Assert.assertTrue(input.getProducts().isEmpty());
 		Assert.assertFalse(similarWrapper.getResponse().isEmpty());
 		Assert.assertEquals(similarResponses.size(), similarWrapper.getResponse().size());
 		Assert.assertFalse(similarWrapper.isListInput());

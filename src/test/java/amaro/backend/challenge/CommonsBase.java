@@ -14,7 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import amaro.backend.challenge.model.Product;
 import amaro.backend.challenge.model.ProductRequest;
+import amaro.backend.challenge.model.ProductWrapper;
 import amaro.backend.challenge.model.SimilarProductFinderRequest;
+import amaro.backend.challenge.model.SimilarProductFinderResponse;
 import amaro.backend.challenge.model.SimilarProductFinderWrapper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -89,6 +91,20 @@ public class CommonsBase {
 				.id(id)
 				.name(name)
 				.tagsVector(tagsVector);
+	}
+	
+	protected ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> createValidInput() {
+		return this.createInput(VESTIDO_WRAP_FLEUR_ID);
+	}
+	
+	protected ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> createInvalidInput() {
+		return this.createInput(INVALID_PRODUCT_ID);
+	}
+	
+	protected ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> createInput(
+			final Long productId) {
+		SimilarProductFinderWrapper similarWrapper = this.createSimilarProductFinderWrapper(productId);
+		return new ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse>(similarWrapper);
 	}
 	
 }

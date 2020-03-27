@@ -27,9 +27,7 @@ public class SimilarityServiceTest extends CommonsBase {
 
 	@Test
 	public void testProcess() {
-		ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> input = this
-				.createInput(VESTIDO_WRAP_FLEUR_ID);
-		
+		ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> input = this.createValidInput();
 		input = this.similarityService.process(input);
 		Assert.assertFalse(input.getResponse().isEmpty());
 		Assert.assertEquals(TOTAL_MOST_SIMILAR_PRODUCTS, input.getResponse().size());
@@ -37,16 +35,8 @@ public class SimilarityServiceTest extends CommonsBase {
 	
 	@Test(expected = ProductNotFoundException.class)
 	public void testProductNotFoundException() {
-		ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> input = this
-				.createInput(INVALID_PRODUCT_ID);
-		
+		ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> input = this.createInvalidInput();
 		this.similarityService.process(input);
-	}
-	
-	private ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse> createInput(
-			final Long productId) {
-		SimilarProductFinderWrapper similarWrapper = this.createSimilarProductFinderWrapper(productId);
-		return new ProductWrapper<SimilarProductFinderWrapper, SimilarProductFinderResponse>(similarWrapper);
 	}
 
 }

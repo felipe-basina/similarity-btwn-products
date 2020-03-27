@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import amaro.backend.challenge.service.IProductService;
+import amaro.backend.challenge.service.SimilarityService;
 import amaro.backend.challenge.service.TagService;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
@@ -28,6 +29,13 @@ public class ProductFactoryComponentTest {
 		IProductService productService = this.productFactoryComponent
 				.getImplementationFrom(TagService.TAG_SERVICE_QUALIFIER);
 		Assert.assertTrue(productService instanceof TagService);
+	}
+
+	@Test
+	public void testGetImplementationFromSimilarityServiceQualifier() {
+		IProductService productService = this.productFactoryComponent
+				.getImplementationFrom(SimilarityService.SIMILARITY_SERVICE_QUALIFIER);
+		Assert.assertTrue(productService instanceof SimilarityService);
 	}
 
 }

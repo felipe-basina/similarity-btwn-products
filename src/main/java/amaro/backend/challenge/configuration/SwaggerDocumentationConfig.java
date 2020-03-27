@@ -10,8 +10,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger.web.UiConfiguration;
-import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T01:08:13.280Z")
@@ -19,12 +17,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerDocumentationConfig {
-
-	@Bean
-	public UiConfiguration tryItOutConfig() {
-		final String[] methodsWithTryItOutButton = { "" };
-		return UiConfigurationBuilder.builder().supportedSubmitMethods(methodsWithTryItOutButton).build();
-	}
 
 	ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Similarity Between Products").description(

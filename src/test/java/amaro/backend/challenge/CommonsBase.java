@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import amaro.backend.challenge.model.Product;
 import amaro.backend.challenge.model.ProductRequest;
+import amaro.backend.challenge.model.SimilarProductFinderRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -59,6 +60,13 @@ public class CommonsBase {
 			log.error("Error converting object to string", e);
 		}
 		return null;
+	}
+	
+	protected SimilarProductFinderRequest createSimilarProductFinderRequest(Long id, String name, List<Integer> tagsVector) {
+		return new SimilarProductFinderRequest()
+				.id(id)
+				.name(name)
+				.tagsVector(tagsVector);
 	}
 	
 }

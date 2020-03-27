@@ -6,3 +6,15 @@ sudo: required
 
 script: 
   - mvn clean package
+
+env:
+  HEROKU_APP_NAME: amaro-challenge
+
+deploy:
+ provider: heroku
+ api-key: 
+  secure: Yi854N2aRjE8sY63+V5X3mjOlqyX7Xu02vO8yv2b3u5NScFe+zKsOaAKId+xD6Qfhsk/kOON74XxMxnWwTdE/E+p8pJGzIIteqGGmeQAZHTC/tjAqb9z/qB9cvX0t2oyfRTwFE6nzsE8PY2V7oAuR/rwZit1y/0l3cMkwTlg006KPIYVwNQbgHhHPfrVT6ad6HJJ5X6vrlxNEPY7FxeSgRLyNTaKE6/nx+K96+hBQNXpOuLt59m0DtPyAeLPo77R8jx4d35DTFzWDmpg/qvqOshFX5h2gv2mvH2SHBNQs0IZ4eFotR/pNTx37sptCbmqIj1FAfy4XKJ/r09RiFDPe1rd1K9W0+8H9UKrayzrZVAYAVcKeFzZGtHnfewA65rN4hl5GyL40nUaYdJOhgLJuZTwrQ1YbOvw0L8rdx6pL/WKv4gruy4LefnZFm6OLOxd3qyJHdP+p9YUs1QuYQ6KfHBFhcahSTVMTBk59lM2+GvJh60zHHVJ1ZiyXfj8XMhJL6sdXycve531+4+FpUflLsFwdsUeYc1SS7KqZSw/zb/4NjETVRTC/i/l3/yNVqy5jHWU2FNej9FAGeYHkmEWERMNDt9JfznrXD4Drw0IaxBvSTgZ9Tn+SW2bkbVAnTM5iMmtXNGXBGjMOvTQz3gwJNFpHJOHs3U/dR63WkZ3npc=
+ app: $HEROKU_APP_NAME
+
+before_install:
+  - chmod +x mvnw

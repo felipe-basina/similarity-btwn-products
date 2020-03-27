@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import amaro.backend.challenge.CommonsBase;
-import amaro.backend.challenge.ProductNotFoundException;
+import amaro.backend.challenge.exception.ProductNotFoundException;
 import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.ProductResponse;
 import amaro.backend.challenge.model.ProductWrapper;

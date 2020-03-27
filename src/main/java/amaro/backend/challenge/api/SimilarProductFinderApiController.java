@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import amaro.backend.challenge.ProductNotFoundException;
+import amaro.backend.challenge.exception.ProductNotFoundException;
 import amaro.backend.challenge.model.ApiErrorResponse;
 import amaro.backend.challenge.model.ProductWrapper;
 import amaro.backend.challenge.model.SimilarProductFinderRequest;

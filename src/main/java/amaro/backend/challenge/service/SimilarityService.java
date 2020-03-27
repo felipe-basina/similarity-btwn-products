@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
-import amaro.backend.challenge.ProductNotFoundException;
+import amaro.backend.challenge.exception.ProductNotFoundException;
 import amaro.backend.challenge.model.ProductWrapper;
 import amaro.backend.challenge.model.SimilarProductFinderRequest;
 import amaro.backend.challenge.model.SimilarProductFinderResponse;

@@ -1,4 +1,4 @@
-package amaro.backend.challenge;
+package amaro.backend.challenge.exception;
 
 public class ProductNotFoundException extends RuntimeException {
 

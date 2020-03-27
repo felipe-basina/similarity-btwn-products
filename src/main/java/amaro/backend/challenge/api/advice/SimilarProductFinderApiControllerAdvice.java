@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import amaro.backend.challenge.ProductNotFoundException;
 import amaro.backend.challenge.api.SimilarProductFinderApiController;
+import amaro.backend.challenge.exception.ProductNotFoundException;
 
 @RestControllerAdvice(assignableTypes = { SimilarProductFinderApiController.class })
 @SuppressWarnings("rawtypes")

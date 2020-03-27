@@ -3,8 +3,8 @@ package amaro.backend.challenge.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import amaro.backend.challenge.ProductNotFoundException;
 import amaro.backend.challenge.component.ProductFactoryComponent;
+import amaro.backend.challenge.exception.ProductNotFoundException;
 import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.ProductResponse;
 import amaro.backend.challenge.model.ProductWrapper;

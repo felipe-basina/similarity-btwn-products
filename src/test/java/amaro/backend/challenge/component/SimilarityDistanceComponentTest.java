@@ -42,8 +42,8 @@ public class SimilarityDistanceComponentTest {
 
 		BigDecimal _050 = BigDecimal.valueOf(0.50).setScale(SimilarityComponent.DEFAULT_SCALE, RoundingMode.FLOOR);
 
-		BigDecimal distance = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
-		Assert.assertEquals(_050, distance);
+		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
+		Assert.assertEquals(_050, similarity);
 	}
 
 	@Test
@@ -53,8 +53,8 @@ public class SimilarityDistanceComponentTest {
 
 		BigDecimal _030 = BigDecimal.valueOf(0.30).setScale(SimilarityComponent.DEFAULT_SCALE, RoundingMode.FLOOR);
 
-		BigDecimal distance = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
-		Assert.assertEquals(_030, distance);
+		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
+		Assert.assertEquals(_030, similarity);
 	}
 
 }

@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class SimilarityDistanceComponentTest {
+public class SimilarityComponentTest {
 
 	@Autowired
 	private SimilarityComponent similarityComponent;
@@ -55,6 +55,39 @@ public class SimilarityDistanceComponentTest {
 
 		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
 		Assert.assertEquals(_030, similarity);
+	}
+
+	@Test
+	public void testCalculateSimilarity_033() {
+		List<Integer> productTagsVector = Arrays.asList(0, 0, 0, 0, 1);
+		List<Integer> comparingProductTagsVector = Arrays.asList(1, 1, 1, 1, 1);
+
+		BigDecimal _033 = BigDecimal.valueOf(0.33).setScale(SimilarityComponent.DEFAULT_SCALE, RoundingMode.FLOOR);
+
+		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
+		Assert.assertEquals(_033, similarity);
+	}
+
+	@Test
+	public void testCalculateSimilarity_1() {
+		List<Integer> productTagsVector = Arrays.asList(0, 0, 0, 0, 0);
+		List<Integer> comparingProductTagsVector = Arrays.asList(0, 0, 0, 0, 0);
+
+		BigDecimal _10 = BigDecimal.valueOf(1.00).setScale(SimilarityComponent.DEFAULT_SCALE, RoundingMode.FLOOR);
+
+		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
+		Assert.assertEquals(_10, similarity);
+	}
+
+	@Test
+	public void testCalculateSimilarity_1v2() {
+		List<Integer> productTagsVector = Arrays.asList(1, 1, 1, 1, 1);
+		List<Integer> comparingProductTagsVector = Arrays.asList(1, 1, 1, 1, 1);
+
+		BigDecimal _10 = BigDecimal.valueOf(1.00).setScale(SimilarityComponent.DEFAULT_SCALE, RoundingMode.FLOOR);
+
+		BigDecimal similarity = this.similarityComponent.calculateSimilarity(productTagsVector, comparingProductTagsVector);
+		Assert.assertEquals(_10, similarity);
 	}
 
 }

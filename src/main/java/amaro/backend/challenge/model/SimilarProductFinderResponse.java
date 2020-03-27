@@ -17,7 +17,8 @@ import io.swagger.annotations.ApiModelProperty;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T01:08:13.280Z")
 
-public class SimilarProductFinderResponse {
+public class SimilarProductFinderResponse implements Comparable<SimilarProductFinderResponse> {
+
 	@JsonProperty("id")
 	private Long id = null;
 
@@ -130,4 +131,10 @@ public class SimilarProductFinderResponse {
 		}
 		return o.toString().replace("\n", "\n    ");
 	}
+	
+	@Override
+	public int compareTo(SimilarProductFinderResponse o) {
+		return o.getSimilarity().compareTo(this.getSimilarity());
+	}
+	
 }

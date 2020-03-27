@@ -15,15 +15,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import amaro.backend.challenge.model.Product;
 import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.SimilarProductFinderRequest;
+import amaro.backend.challenge.model.SimilarProductFinderWrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class CommonsBase {
 
-	private String productsFileName = "products.json";
+	protected String productsFileName = "products.json";
+	protected String productsWithTagsVectorFileName = "products-with-tags-vector.json";
 	
 	protected List<String> allTags = Arrays.asList("neutro", "veludo", "couro", "basics", "festa", "workwear", "inverno", "boho",
 			"estampas", "balada", "colorido", "casual", "liso", "moderno", "passeio", "metal", "viagem", "delicado", "descolado", "elastano");
+	
+	protected static final long VESTIDO_WRAP_FLEUR_ID = 7516l;
+	protected static final long INVALID_PRODUCT_ID = 101l;
+	protected static final int TOTAL_MOST_SIMILAR_PRODUCTS = 3;
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
 	
@@ -36,19 +42,35 @@ public class CommonsBase {
 	
 	protected ProductRequest createProductRequest() {
 		try {
-			return objectMapper.readValue(this.getFileContentAsText(), ProductRequest.class);
+			return objectMapper.readValue(this.getFileContentAsText(this.productsFileName), ProductRequest.class);
 		} catch (Exception e) {
 			log.error("Error converting products object", e);
 		}
 		return null;
 	}
 	
-	private String getFileContentAsText() {
+	protected SimilarProductFinderWrapper createSimilarProductFinderWrapper(final Long productId) {
+		return new SimilarProductFinderWrapper(productId, this.createSimilarProductFinderRequestList());
+	}
+	
+	protected List<SimilarProductFinderRequest> createSimilarProductFinderRequestList() {
 		try {
-			InputStream inputStream = new ClassPathResource(this.productsFileName).getInputStream();
+			SimilarProductFinderRequest[] products = objectMapper
+					.readValue(this.getFileContentAsText(this.productsWithTagsVectorFileName), 
+							SimilarProductFinderRequest[].class);
+			return Arrays.asList(products);
+		} catch (Exception e) {
+			log.error("Error converting products object", e);
+		}
+		return null;
+	}
+	
+	private String getFileContentAsText(final String fileName) {
+		try {
+			InputStream inputStream = new ClassPathResource(fileName).getInputStream();
 			return IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
 		} catch (IOException e) {
-			log.error("Error reading file from classpath", e);
+			log.error("Error reading file {} from classpath", fileName, e);
 		}
 		return null;
 	}

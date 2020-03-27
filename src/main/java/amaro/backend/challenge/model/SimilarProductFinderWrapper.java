@@ -10,7 +10,7 @@ import lombok.Getter;
 public class SimilarProductFinderWrapper {
 
 	private Long productId;
-	
+
 	private List<SimilarProductFinderRequest> similars;
-	
+
 }

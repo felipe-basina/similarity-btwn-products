@@ -14,117 +14,115 @@ import io.swagger.annotations.ApiModelProperty;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-03-26T01:08:13.280Z")
 
-public class ApiErrorResponse   {
-  @JsonProperty("timestamp")
-  private String timestamp = null;
+public class ApiErrorResponse {
+	@JsonProperty("timestamp")
+	private String timestamp = null;
 
-  @JsonProperty("status")
-  private Integer status = null;
+	@JsonProperty("status")
+	private Integer status = null;
 
-  @JsonProperty("message")
-  private String message = null;
+	@JsonProperty("message")
+	private String message = null;
 
-  public ApiErrorResponse timestamp(String timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
+	public ApiErrorResponse timestamp(String timestamp) {
+		this.timestamp = timestamp;
+		return this;
+	}
 
-  /**
-   * Get timestamp
-   * @return timestamp
-  **/
-  @ApiModelProperty(value = "")
+	/**
+	 * Get timestamp
+	 * 
+	 * @return timestamp
+	 **/
+	@ApiModelProperty(value = "")
 
+	public String getTimestamp() {
+		return timestamp;
+	}
 
-  public String getTimestamp() {
-    return timestamp;
-  }
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
 
-  public void setTimestamp(String timestamp) {
-    this.timestamp = timestamp;
-  }
+	public ApiErrorResponse status(Integer status) {
+		this.status = status;
+		return this;
+	}
 
-  public ApiErrorResponse status(Integer status) {
-    this.status = status;
-    return this;
-  }
+	/**
+	 * Get status
+	 * 
+	 * @return status
+	 **/
+	@ApiModelProperty(value = "")
 
-  /**
-   * Get status
-   * @return status
-  **/
-  @ApiModelProperty(value = "")
+	public Integer getStatus() {
+		return status;
+	}
 
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-  public Integer getStatus() {
-    return status;
-  }
+	public ApiErrorResponse message(String message) {
+		this.message = message;
+		return this;
+	}
 
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
+	/**
+	 * Get message
+	 * 
+	 * @return message
+	 **/
+	@ApiModelProperty(value = "")
 
-  public ApiErrorResponse message(String message) {
-    this.message = message;
-    return this;
-  }
+	public String getMessage() {
+		return message;
+	}
 
-  /**
-   * Get message
-   * @return message
-  **/
-  @ApiModelProperty(value = "")
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ApiErrorResponse apiErrorResponse = (ApiErrorResponse) o;
+		return Objects.equals(this.timestamp, apiErrorResponse.timestamp)
+				&& Objects.equals(this.status, apiErrorResponse.status)
+				&& Objects.equals(this.message, apiErrorResponse.message);
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(timestamp, status, message);
+	}
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ApiErrorResponse {\n");
 
+		sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+		sb.append("    status: ").append(toIndentedString(status)).append("\n");
+		sb.append("    message: ").append(toIndentedString(message)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ApiErrorResponse apiErrorResponse = (ApiErrorResponse) o;
-    return Objects.equals(this.timestamp, apiErrorResponse.timestamp) &&
-        Objects.equals(this.status, apiErrorResponse.status) &&
-        Objects.equals(this.message, apiErrorResponse.message);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(timestamp, status, message);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ApiErrorResponse {\n");
-    
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }
-

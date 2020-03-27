@@ -1,0 +1,246 @@
+swagger: "2.0"
+info:
+  description: "This is a minimum solution for Amaro's back-end challenge which consists in providing two endpoints for operations related to products"
+  version: "1.0.0"
+  title: "Similarity Between Products"
+  contact:
+    email: "felipe.basina@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/similarity"
+tags:
+- name: "TagsVector"
+  description: "Creates a vector of tags of dimension 20 where each position of the array corresponds to a characteristic and has a value equal to 1 if the product has the characteristic otherwise the value is equal to 0"
+- name: "SimilarProductFinder"
+  description: "Fetches the product specified by its id as parameter into a previously input payload and calculates similarity between the input product and all other products and returns a list with the three most similar products"
+schemes:
+- "https"
+- "http"
+paths:
+  /tagsVector:
+    post:
+      tags:
+      - "TagsVector"
+      summary: "Creates characteristics tags for each one of the available products in the input payload"
+      description: ""
+      operationId: "createCharacteristicsTags"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "products"
+        description: "An array of available products"
+        required: true
+        schema:
+            $ref: "#/definitions/ProductRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ProductResponse"
+        500:
+          description: "Internal server error"
+          schema:
+              $ref: "#/definitions/ApiErrorResponse"
+          
+  /similarProductFinder/{productId}:
+    post:
+      tags:
+      - "SimilarProductFinder"
+      summary: "Returns a list with the three most similar products according to the product specified by its id as parameter"
+      description: ""
+      operationId: "getSimilarProducts"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "productId"
+        description: "The product ID to fetch similar products"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "An array of available products with its charcateristics"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/SimilarProductFinderRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SimilarProductFinderResponse"
+        404:
+          description: "product not found"
+          schema:
+              $ref: "#/definitions/ApiErrorResponse"
+        500:
+          description: "Internal server error"
+          schema:
+              $ref: "#/definitions/ApiErrorResponse"
+
+definitions:
+  ProductRequest:
+    type: "object"
+    properties:
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/Product"
+
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "The product ID"
+        format: "int64"
+      name:
+        type: "string"
+        description: "The product name"
+      tags:
+        type: "array"
+        example:
+          - "neutro"
+          - "veludo"
+          - "couro"
+          - "basics"
+          - "festa"
+          - "workwear"
+          - "inverno"
+          - "boho"
+          - "estampas"
+          - "balada"
+          - "colorido"
+          - "casual"
+          - "liso"
+          - "moderno"
+          - "passeio"
+          - "metal"
+          - "viagem"
+          - "delicado"
+          - "descolado"
+          - "elastano"
+        items:
+          type: "string"
+          
+  ProductResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "The product ID"
+        format: "int64"
+      name:
+        type: "string"
+        description: "The product name"
+      tags:
+        type: "array"
+        example:
+          - "neutro"
+          - "veludo"
+          - "couro"
+          - "basics"
+          - "festa"
+          - "workwear"
+          - "inverno"
+          - "boho"
+          - "estampas"
+          - "balada"
+          - "colorido"
+          - "casual"
+          - "liso"
+          - "moderno"
+          - "passeio"
+          - "metal"
+          - "viagem"
+          - "delicado"
+          - "descolado"
+          - "elastano"
+        items:
+          type: "string"
+      tagsVector:
+        type: "array"
+        example:
+        - 0
+        - 1
+        items:
+          type: "integer"
+          
+  SimilarProductFinderRequest:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "The product ID"
+        format: "int64"
+      name:
+        type: "string"
+        description: "The product name"
+      tags:
+        type: "array"
+        example:
+          - "neutro"
+          - "veludo"
+          - "couro"
+          - "basics"
+          - "festa"
+          - "workwear"
+          - "inverno"
+          - "boho"
+          - "estampas"
+          - "balada"
+          - "colorido"
+          - "casual"
+          - "liso"
+          - "moderno"
+          - "passeio"
+          - "metal"
+          - "viagem"
+          - "delicado"
+          - "descolado"
+          - "elastano"
+        items:
+          type: "string"
+      tagsVector:
+        type: "array"
+        example:
+        - 0
+        - 1
+        items:
+          type: "integer"
+          
+  SimilarProductFinderResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "The product ID"
+        format: "int64"
+      name:
+        type: "string"
+        description: "The product name"
+      similarity:
+        type: "number"
+          
+  ApiErrorResponse:
+    type: "object"
+    properties:
+      timestamp:
+        type: "string"
+        format: "YYYY-MM-DDTHH:MM:SS"
+      status:
+        type: "integer"
+      message:
+        type: "string"

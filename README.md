@@ -17,18 +17,18 @@ These following requirements are considered on this solution:
 OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
 OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)`.
 * At least Apache Maven version `apache-maven-3.5.4`
+
 **-- These settings are the ones used to provide the solution, other setup may not respond as expected --**
 
 ### Sample JSON data
 A sample of JSON for request purposes can be get from the following project path
-```
-Products for getting tags vector
-https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/res
-ources/products.json
+**Products for getting tags vector**
+`https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/res
+ources/products.json`
 
-Products with tags vector for getting similar products
-https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products-with-tags-vector.json
-```
+**Products with tags vector for getting similar products**
+`https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products-with-tags-vector.json`
+
 
 #### Sample of execution using IDE
 To run the application follow steps below:
@@ -48,7 +48,7 @@ $ sh run.sh
  1.2 Download and build an image
  1.3 Run docker image
  - So now the application has been started and ready for receiving requests
- ---------------------------------------------------------------------------
+ ------------------------------------------------------
 2. To stop running application
 $ sh stop.sh (should have executed from another console tab/window)
  - With this command the container will be stopped
@@ -66,6 +66,6 @@ The code repository is linked to the [Travis CI](https://travis-ci.org/) to prov
 
 ### Heroku
 The current master branch version is deployed into [Heroku](https://dashboard.heroku.com/) cloud environment so it is possible to test execution from the following exposed endpoints:
- * **API Documentation :** `https://amaro-challenge.herokuapp.com/swagger-ui.html`
- * **Tags Vector :**  `https://amaro-challenge.herokuapp.com/tagsVector`
- * **Similar Product Finder :** `https://amaro-challenge.herokuapp.com/similarProductFinder/{productId}`
+ * **API Documentation :** [/swagger-ui.html](https://amaro-challenge.herokuapp.com/swagger-ui.html)
+ * **Tags Vector :**  [/tagsVector](https://amaro-challenge.herokuapp.com/tagsVector)
+ * **Similar Product Finder :** [/similarProductFinder/{productId}](https://amaro-challenge.herokuapp.com/similarProductFinder/)

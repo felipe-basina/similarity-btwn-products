@@ -1,9 +1,8 @@
 package amaro.backend.challenge.api;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import amaro.backend.challenge.model.ProductRequest;
 import amaro.backend.challenge.model.ProductResponse;
+import amaro.backend.challenge.model.ProductWrapper;
+import amaro.backend.challenge.service.ProductFacadeService;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,11 +19,21 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class TagsVectorApiController implements TagsVectorApi {
 
-	public ResponseEntity<List<ProductResponse>> createCharacteristicsTags(
+	private ProductFacadeService productFacadeService;
+	
+	@Autowired
+	public TagsVectorApiController(ProductFacadeService productFacadeService) {
+		this.productFacadeService = productFacadeService;
+	}
+	
+	public ResponseEntity createCharacteristicsTags(
 			@ApiParam(value = "An array of available products", required = true) @Valid @RequestBody ProductRequest products) {
-		return new ResponseEntity<List<ProductResponse>>(HttpStatus.NOT_IMPLEMENTED);
+		log.info("Processing products");
+		ProductWrapper<ProductRequest, ProductResponse> productWrapper = this.productFacadeService.addTagVector(products); 
+		return ResponseEntity.status(HttpStatus.OK).body(productWrapper.getResponse());
 	}
 
 }

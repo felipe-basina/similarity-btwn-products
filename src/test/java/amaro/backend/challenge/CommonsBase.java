@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ClassPathResource;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import amaro.backend.challenge.model.Product;
@@ -23,6 +24,8 @@ public class CommonsBase {
 	protected List<String> allTags = Arrays.asList("neutro", "veludo", "couro", "basics", "festa", "workwear", "inverno", "boho",
 			"estampas", "balada", "colorido", "casual", "liso", "moderno", "passeio", "metal", "viagem", "delicado", "descolado", "elastano");
 	
+	private ObjectMapper objectMapper = new ObjectMapper();
+	
 	protected Product createProduct() {
 		return new Product()
 				.id(58345L)
@@ -31,7 +34,6 @@ public class CommonsBase {
 	}
 	
 	protected ProductRequest createProductRequest() {
-		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			return objectMapper.readValue(this.getFileContentAsText(), ProductRequest.class);
 		} catch (Exception e) {
@@ -46,6 +48,15 @@ public class CommonsBase {
 			return IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
 		} catch (IOException e) {
 			log.error("Error reading file from classpath", e);
+		}
+		return null;
+	}
+	
+	protected String convertToJson(Object object) {
+		try {
+			return this.objectMapper.writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			log.error("Error converting object to string", e);
 		}
 		return null;
 	}

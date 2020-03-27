@@ -3,6 +3,7 @@ package amaro.backend.challenge.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProductWrapper<T, R> {
 
@@ -33,7 +34,7 @@ public class ProductWrapper<T, R> {
 	}
 	
 	public ProductWrapper<T, R> addResponse(List<R> response) {
-		this.response.addAll(response);
+		this.response.addAll(response.stream().sorted().collect(Collectors.toList()));
 		return this;
 	}
 	

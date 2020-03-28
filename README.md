@@ -8,11 +8,12 @@ The application exposes two endpoints for specific product operations to be proc
   2. Similar Product Finder - `POST /similarProductFinder/{productId}`
 **Returns a list with the three most similar products according to the product specified by its id as parameter**
 
-There is also an **API Swagger Documentation** in the following path `GET /swagger-ui.html` and from them is also possible to test the exposed endpoints!
+There is also an **API Swagger Documentation** in the following path `GET /swagger-ui.html` and from them it is also possible to test the exposed endpoints!
 
 #### Assumptions
 These following requirements are considered on this solution:
-* Running on an **Unix** environments it would be a nice play! But with all the stack dependencies resolved **(Java, Maven, Docker...)** it would not be a problem using other one
+* For the **Similar Product Finder** operation the **similarity** and **productId** model attributes are both considered when sorting to find the most similar products
+* Running on an **Unix** environments it would be a nice play! But with all the stack dependencies resolved **(Java, Maven, Docker...)** it would not be a problem using another one
 * At least Java version `openjdk version "1.8.0_242"
 OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
 OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)`
@@ -20,12 +21,15 @@ OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)`
 
 **-- These settings are the ones used to provide the solution, other setup may not respond as expected --**
 
+### Challenge Document Description
+The source documentation about this challenge can be found at:
+- `https://github.com/felipe-basina/similarity-btwn-products/tree/master/challenge-doc/JAVA Back-end Challenge.pdf`
+
 ### Sample JSON data
 A sample of JSON for request purposes can be get from the following project path
 
 **Products for getting tags vector**
-- `https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/res
-ources/products.json`
+- `https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products.json`
 
 **Products with tags vector for getting similar products**
 - `https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products-with-tags-vector.json`
@@ -48,10 +52,10 @@ $ sh run.sh
  1.1 Compile and package base code
  1.2 Download and build an image
  1.3 Run docker image
- - So now the application has been started and ready for receiving requests
-----------------------------------------------------------------------------
+ - So now the application has been started on PORT <9091> and ready for receiving requests
+--------------------------------------------------------------------------------------------
 2. To stop running application
-$ sh stop.sh (should have executed from another console tab/window)
+$ sh stop.sh (should be executed from another console tab/window)
  - With this command the container will be stopped
 ```
 

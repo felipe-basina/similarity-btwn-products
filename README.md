@@ -49,7 +49,7 @@ $ sh run.sh
  1.2 Download and build an image
  1.3 Run docker image
  - So now the application has been started and ready for receiving requests
- ------------------------------------------------------
+----------------------------------------------------------------------------
 2. To stop running application
 $ sh stop.sh (should have executed from another console tab/window)
  - With this command the container will be stopped
@@ -63,7 +63,7 @@ $ mvn clean package
 Needless to say that it is possible to run all of the tests from your favorite IDE! `:)`
 
 ### CI/CD
-The code repository is linked to the [Travis CI](https://travis-ci.org/) to provide feedback when pushing new versions into master branch
+The code repository is linked to the [Travis CI](https://travis-ci.org/) to provide feedback when pushing new versions into master branch, moreover a new version of the application is deployed into the `Heroku` cloud environment
 
 ### Heroku
 The current master branch version is deployed into [Heroku](https://dashboard.heroku.com/) cloud environment so it is possible to test execution from the following exposed endpoints:

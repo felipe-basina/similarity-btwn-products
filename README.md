@@ -62,7 +62,7 @@ $ sh stop.sh (should be executed from another console tab/window)
 ### Testing
 The project contains a set of unit/[narrow integration tests](https://martinfowler.com/bliki/IntegrationTest.html) and to run all of them just type when still at the root folder of the project:
 ```
-$ mvn clean package
+$ mvn clean test
 ```
 Needless to say that it is possible to run all of the tests from your favorite IDE! `:)`
 

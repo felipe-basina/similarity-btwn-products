@@ -8,7 +8,7 @@ The application exposes two endpoints for specific product operations to be proc
   2. Similar Product Finder - `POST /similarProductFinder/{productId}`
 **Returns a list with the three most similar products according to the product specified by its id as parameter**
 
-There is also an **API Swager Documentation** in the following path `GET /swagger-ui.html` and from them is also possible to test the exposed endpoints!
+There is also an **API Swagger Documentation** in the following path `GET /swagger-ui.html` and from them is also possible to test the exposed endpoints!
 
 #### Assumptions
 These following requirements are considered on this solution:

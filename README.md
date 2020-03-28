@@ -12,22 +12,23 @@ There is also an **API Swager Documentation** in the following path `GET /swagge
 
 #### Assumptions
 These following requirements are considered on this solution:
-* Running on a **Unix** environments it would be a nice play! But with all the stack dependencies resolved **(Java, Maven, Docker...)** it would not be a problem using other one
+* Running on an **Unix** environments it would be a nice play! But with all the stack dependencies resolved **(Java, Maven, Docker...)** it would not be a problem using other one
 * At least Java version `openjdk version "1.8.0_242"
 OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
-OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)`.
+OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)`
 * At least Apache Maven version `apache-maven-3.5.4`
 
 **-- These settings are the ones used to provide the solution, other setup may not respond as expected --**
 
 ### Sample JSON data
 A sample of JSON for request purposes can be get from the following project path
+
 **Products for getting tags vector**
-`https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/res
+- `https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/res
 ources/products.json`
 
 **Products with tags vector for getting similar products**
-`https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products-with-tags-vector.json`
+- `https://github.com/felipe-basina/similarity-btwn-products/blob/master/src/test/resources/products-with-tags-vector.json`
 
 
 #### Sample of execution using IDE

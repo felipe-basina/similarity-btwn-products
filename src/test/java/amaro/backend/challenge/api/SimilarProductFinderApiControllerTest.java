@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -134,6 +135,22 @@ public class SimilarProductFinderApiControllerTest extends CommonsBase {
 				.andExpect(jsonPath("$.timestamp").exists())
 				.andExpect(jsonPath("$.status", is(HttpStatus.NOT_FOUND.value())))
 				.andExpect(jsonPath("$.message", is(message)))
+			.andDo(MockMvcResultHandlers.print());
+	}
+	
+	@Test
+	public void testInternalServerError() throws Exception {
+		List<SimilarProductFinderRequest> products = this.createSimilarProductFinderRequestList()
+				.subList(0, 1);
+		Assert.assertEquals(1, products.size());
+		
+		this.mockMvc.perform(post(this.endpoint + products.get(0).getId())
+				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+				.content(this.convertToJson(products)))
+				.andExpect(status().isInternalServerError())
+				.andExpect(jsonPath("$.timestamp").exists())
+				.andExpect(jsonPath("$.status", is(HttpStatus.INTERNAL_SERVER_ERROR.value())))
+				.andExpect(jsonPath("$.message").exists())
 			.andDo(MockMvcResultHandlers.print());
 	}
 
